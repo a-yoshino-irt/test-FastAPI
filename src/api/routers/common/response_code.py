@@ -1,0 +1,5 @@
+class ResponseCode(int):
+  OK = 0
+  PARAM_ERROR = 40000
+  DATA_NOT_FOUND = 40001
+  SYSTEM_ERROR = 50000

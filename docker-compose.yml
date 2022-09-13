@@ -1,0 +1,14 @@
+# ローカル環境用のdocker-compose.yaml
+
+version: '3'
+
+services:
+  test-fastapi:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "8111:80"
+    volumes:
+      - .:/var/app/test-fastapi
+    env_file: .env
