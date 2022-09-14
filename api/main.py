@@ -1,15 +1,18 @@
+from cgi import test
 from urllib.request import Request
 from fastapi import  FastAPI
 from fastapi.responses import JSONResponse
 from routers.common.response_message import ResponseMessage
 from routers.common.response_code import ResponseCode
 from routers.common.schema import Response
+from api_test.test import set_test_data
 
 from routers import set_router
 
 app = FastAPI()
-
 set_router(app)
+set_test_data()
+
 
 
 @app.middleware("http")

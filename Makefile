@@ -1,8 +1,17 @@
-build:
-	docker-compose build --no-cache
+api/build:
+	docker-compose build --no-cache test-fastapi
 
-up:
-	docker-compose up
+api/up:
+	docker-compose up test-fastapi
 
-down:
-	docker-compose down
+api/down:
+	docker-compose rm -fsv test-fastapi
+
+db/build:
+	docker-compose build --no-cache test-fastapi-postgresql
+
+db/up:
+	docker-compose up test-fastapi-postgresql
+
+db/down:
+	docker-compose rm -fsv test-fastapi-postgresql

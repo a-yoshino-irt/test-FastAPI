@@ -6,9 +6,26 @@ services:
   test-fastapi:
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: ./api/Dockerfile
     ports:
-      - "8111:80"
+      - "127.0.0.1:8111:80"
     volumes:
       - .:/var/app/test-fastapi
-    env_file: .env
+    env_file: api/.env
+    networks:
+      - test-fastapi-net
+  test-fastapi-postgresql:
+    build:
+      context: .
+      dockerfile: database/postgresql/Dockerfile
+    ports:
+      - "5432:5432"
+    volumes:
+      - .:/var/app/test-fastapi
+    env_file: database/postgresql/.env
+    networks:
+      - test-fastapi-net
+
+networks:
+  test-fastapi-net:
+    driver: bridge
